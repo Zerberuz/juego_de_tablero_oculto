@@ -1,0 +1,75 @@
+Program juego_de_tablero
+Start
+    Function create_board(size, options)
+    Start_Function
+        Declare Array board
+        For each row in range from 0 to size-1 do
+            For each column in range from 0 to size-1 do
+                Set board[row][column] to a random value from options
+            End For
+        End For
+        Return board
+    End_Function
+    
+    Function show_board(board)
+    Start_Function
+        For each row in board do
+            For each value in row do
+                Display value with space as separator
+            End For
+            Display newline
+        End For
+    End_Function
+    
+    Function hide_value(board)
+    Start_Function
+        Declare Integer secret_row, secret_col
+        Declare String secret_value
+        
+        Set secret_row to a random integer between 0 and size-1
+        Set secret_col to a random integer between 0 and size-1
+        Set secret_value to board[secret_row][secret_col]
+        Set board[secret_row][secret_col] to "*"
+        
+        Return secret_row, secret_col, secret_value, board
+    End_Function
+    
+    Function play_game(size, options)
+    Start_Function
+        Declare Array board
+        Declare Integer secret_row, secret_col
+        Declare String secret_value
+        Declare String secret
+        
+        Set board to the result of create_board(size, options)
+        Call show_board(board)
+        Sleep 
+        Call clear_output()
+        Set secret_row, secret_col, secret_value, board to the result of hide_value(board)
+        Display "¡Un valor secreto ha sido ocultado en el tablero!"
+        Call show_board(board)
+        Display "Adivina el valor secreto:"
+        Input secret
+        
+        If secret == secret_value Then
+            Display "¡Felicidades! ¡Has encontrado el valor secreto!"
+        Else
+            Display "Lo siento, el valor secreto era '{}'.".format(secret_value)
+        End If
+    End_Function
+    
+    Display "Bienvenido al Juego de Tablero"
+    Repeat
+        Declare Integer size
+        Declare Array options = ['J', 'Q', 'K', 'A', 'B', 'C']
+        
+        Display "Ingrese el tamaño del tablero:"
+        Input size
+        
+        Call play_game(size, options)
+        
+        Display "¿Quieres volver a jugar? (s/n):"
+        Input respuesta
+        
+    Until respuesta != 's'
+End

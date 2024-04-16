@@ -1,0 +1,7 @@
+El programa es un juego de adivinanza en el que se muestra un tablero de cartas con valores aleatorios, se oculta uno de los valores y luego se le pide al jugador que adivine el valor oculto. Si la adivinanza del jugador coincide con el valor oculto, se muestra un mensaje de felicitación; de lo contrario, se muestra el valor oculto correcto.
+
+El juego se desarrolla en un bucle principal que permite al jugador jugar múltiples rondas si lo desea. 
+En cada ronda, el programa solicita al jugador que ingrese el tamaño del tablero y luego muestra el tablero con los valores de las cartas. 
+Después de unos segundos, oculta uno de los valores y muestra el tablero nuevamente.
+Se le solicitara al jugador que adivine el valor oculto, el programa verifica la respuesta del jugador y muestra el resultado. 
+Después de cada ronda, se le pregunta al jugador si desea volver a jugar.
